@@ -17,3 +17,4 @@ This repository is organized as follows:
    - seating_data.csv: source data file
    - relationship_matrix.py: converting the .csv to a numpy array for easy import
 - /project: Developed work
+   - workshop.ipynb: notebook experimenting and developing required functions and classes for the genetic algorithm
