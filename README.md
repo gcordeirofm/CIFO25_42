@@ -4,7 +4,7 @@ Computational Intelligence for Optimization 24/25 - NOVA IMS
 Group 42:
 - Guilherme Cordeiro (20240527)
 - Louis Berthele
-- Maria Radix
+- Maria Radix (20240687)
 
 ## Repository Structure
 This repository is organized as follows:
