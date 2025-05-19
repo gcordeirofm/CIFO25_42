@@ -35,7 +35,10 @@ def genetic_algorithm(
 
     Returns:
         Solution: The best solution found on the last population after evolving for max_gen generations.
+        list[float]: The fitness of the best individual over the generations
     """
+    best_fitness_over_gens = []
+
     # 1. Initialize a population with N individuals
     population = initial_population
 
@@ -93,6 +96,9 @@ def genetic_algorithm(
 
         if verbose:
             print(f'Final best individual in generation: {get_best_ind(population, maximization).fitness()}')
+        
+        best_ind = get_best_ind(population, maximization)
+        best_fitness_over_gens.append(best_ind.fitness())
 
-    # 3. Return the best individual in P
-    return get_best_ind(population, maximization)
+    # 3. Return the best individual in P + the best individual fitness over generations
+    return get_best_ind(population, maximization), best_fitness_over_gens

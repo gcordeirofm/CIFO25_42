@@ -59,7 +59,7 @@ def run_validations(initial_solution):
     if not isinstance(initial_solution, Solution):
         raise TypeError("Initial solution must be an object of a class that inherits from Solution")
     if not hasattr(initial_solution, "get_neighbors"):
-        print(f"The method 'get_neighbors' must be implemented in the initial soltuion.")
+        print(f"The method 'get_neighbors' must be implemented in the initial solution.")
     neighbors = initial_solution.get_neighbors()
     if not isinstance(neighbors, list):
         raise TypeError("get_neighbors method must return a list")
