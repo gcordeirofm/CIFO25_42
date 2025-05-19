@@ -6,17 +6,18 @@ from copy import deepcopy
 # BLOCK SWAP MUTATION
 def block_swap_mutation(solution_repr, block_size = 4, mut_prob = 0.2):
 
+    block_size = int(block_size)
     new_repr = deepcopy(solution_repr)
 
     if random.random() <= mut_prob:
     
         # randomly choose two indices for block start positions - must be block_size genes before end
-        first_idx = random.randint(0, len(solution_repr)-(block_size-1))
+        first_idx = random.randint(0, len(solution_repr) - 1 - block_size)
         second_idx = first_idx
         
         # We want to get two indexes that are at least block_size number of genes away from one another
         while abs(second_idx-first_idx) <= block_size:
-            second_idx = random.randint(0, len(solution_repr)-(block_size-1))
+            second_idx = random.randint(0, len(solution_repr) - 1 - block_size)
 
         # Ensure first_idx < second_idx
         if first_idx > second_idx:
