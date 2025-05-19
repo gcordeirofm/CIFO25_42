@@ -7,7 +7,13 @@ from library.solution import Solution
 
 # WEDDING SEAT OPTIMIZATION SOLUTION
 class WSOSolution(Solution):
-    def __init__(self, repr=None, relationship_matrix=relationship_matrix, table_size=8, num_tables=8):
+    def __init__(
+            self,
+            repr=None,
+            relationship_matrix=relationship_matrix,
+            table_size=8,
+            num_tables=8):
+        
         self.relationship_matrix = relationship_matrix
         self.table_size = table_size
         self.num_tables = num_tables
@@ -39,17 +45,17 @@ class WSOSolution(Solution):
 class WSOGASolution(WSOSolution):
     def __init__(
         self,
-        values,
-        weights,
-        capacity,
+        relationship_matrix,
         mutation_function, # Callable
         crossover_function, # Callable
+        table_size = 8,
+        num_tables = 8,
         repr = None
     ):
         super().__init__(
-            values=values,
-            weights=weights,
-            capacity=capacity,
+            relationship_matrix=relationship_matrix,
+            table_size=table_size,
+            num_tables=num_tables,
             repr=repr,
         )
 
@@ -62,13 +68,15 @@ class WSOGASolution(WSOSolution):
         new_repr = self.mutation_function(self.repr, mut_prob)
         # Create and return individual with mutated representation
         return WSOGASolution(
-            values=self.values,
-            weights=self.weights,
-            capacity=self.capacity,
-            mutation_function=self.mutation_function,
-            crossover_function=self.crossover_function,
-            repr=new_repr
+                relationship_matrix=self.relationship_matrix,
+                mutation_function=self.mutation_function,
+                crossover_function=self.crossover_function,
+                table_size=self.table_size,
+                num_tables=self.num_tables,
+                repr=new_repr
         )
+            
+        
     
     def crossover(self, other_solution):
         # Apply crossover function to self representation and other solution representation
@@ -77,19 +85,20 @@ class WSOGASolution(WSOSolution):
         # Create and return offspring with new representations
         return (
             WSOGASolution(
-                values=self.values,
-                weights=self.weights,
-                capacity=self.capacity,
+                relationship_matrix=self.relationship_matrix,
                 mutation_function=self.mutation_function,
                 crossover_function=self.crossover_function,
+                table_size=self.table_size,
+                num_tables=self.num_tables,
                 repr=offspring1_repr
             ),
             WSOGASolution(
-                values=self.values,
-                weights=self.weights,
-                capacity=self.capacity,
+                relationship_matrix=self.relationship_matrix,
                 mutation_function=self.mutation_function,
                 crossover_function=self.crossover_function,
+                table_size=self.table_size,
+                num_tables=self.num_tables,
                 repr=offspring2_repr
             )
         )
+    
