@@ -59,7 +59,7 @@ def load_fitness_results(folder, longform = False):
         return fitness_by_config
     
 
-def pairwise_ttest(df_long, best_config):
+def pairwise_ttest(df_long, best_config, pvalue = 0.05):
     
     '''
     Runs pairwise Student T-tests on the configuration with best fitness results against all other configurations.
@@ -86,7 +86,7 @@ def pairwise_ttest(df_long, best_config):
             "mean_other": non_best_fitness.mean(),
             "mean_diff": best_ind_fitness.mean() - non_best_fitness.mean(),
             "p_value": p_value,
-            "significant": p_value < 0.05
+            "significant": p_value < pvalue
         })
 
     return pd.DataFrame(results).sort_values(by="p_value")
