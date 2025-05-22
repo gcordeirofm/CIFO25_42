@@ -1,10 +1,25 @@
 import random
 from copy import deepcopy
 
-
-
 # RANKING SELECTION
 def ranking_selection(population: list, maximization: bool = True):
+
+    '''
+    Definition
+        Ranking Selection sorts all individuals in the original population based
+        on fitness (highest to lowest for maximization, lowest to highest for
+        minimization). Selection probabilities are then calculated based on rankings;
+        higher ranked individuals have higher probability of being selected and vice-versa.
+        This method disregards magnitude of difference in fitnesses of individuals.
+
+    Parameters
+        population: a list of solutions/individuals, must have a fitness() method
+        maximization: boolean to indicate if the O.P. is maximization or minimization
+
+    Returns
+        Deepcopy of the selected individual.   
+    
+    '''
 
     # function to get fitness of individual in population
     def get_fitness(ind):
@@ -44,6 +59,24 @@ def ranking_selection(population: list, maximization: bool = True):
 
 # TOURNAMENT SELECTION
 def tournament_selection(population: list, maximization: bool = True, k: int = 4):
+
+    '''
+    Definition
+        Tournament Selection chooses k random inidivuals from the original
+        population to participate in a tournament. Fitnesses of each individual
+        in the tournament are evaluated, and the individual with best fitness
+        (highest for maximization, lowest for minimization) is selected as the
+        winner. This individual is added to parent population P'.
+
+    
+    Parameters
+        population: a list of solutions/individuals, must have a fitness() method
+        maximization: boolean to indicate if the O.P. is maximization or minimization
+        k: integer that determines size of tournament
+
+    Returns
+        Deepcopy of the winner of the tournament.
+    '''
 
     # function to get fitness of individual in population
     def get_fitness(ind):
