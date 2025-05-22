@@ -24,6 +24,20 @@ def untag_solution(tagged_solution):
 # from lab week 8, some adaptations to make suitable for grouping
 def cycle_crossover(parent1_repr, parent2_repr):
 
+    '''
+    Defintion
+        Cycle Crossover preserves the position of elements by identifying a cycle
+        of indices where the values from each parent will be inherited by each offspring.
+        The remaining indices are filled with values from the other parent, maintaining valid permutations.
+
+    Parameters
+        parent1_repr: Parent 1 representataion (list)
+        parent2_repr: Parent 2 representation (list)
+
+    Returns
+        Pair of offspring with same type as parents
+    '''
+
     tagged_p1 = tag_solution(parent1_repr)
     tagged_p2 = tag_solution(parent2_repr)
 
@@ -71,6 +85,23 @@ def cycle_crossover(parent1_repr, parent2_repr):
 
 # PARTIALLY MATCHED CROSSOVER
 def partially_matched_crossover(parent1_repr, parent2_repr):
+
+    '''
+    
+    Definition
+        In Partially Matched Crossover, two random indices are selected to create a 'window' in
+        each parent solution. Values within the window are copied to the opposite offspring (i.e. 
+        Parent 1 copied into Offspring 2). Remaining indices are filled with values from the other
+        parent, skipping values already present in offspring from window swap.
+    
+    Parameters
+        parent1_repr: Parent 1 representataion (list)
+        parent2_repr: Parent 2 representation (list)
+    
+    Returns
+        Pair of offspring with same type as parents
+        
+    '''
 
     tagged_p1 = tag_solution(parent1_repr)
     tagged_p2 = tag_solution(parent2_repr)
@@ -125,6 +156,22 @@ def partially_matched_crossover(parent1_repr, parent2_repr):
 
 # POSITION BASED CROSSOVER
 def pos_based_crossover(parent1_repr, parent2_repr):
+
+    '''
+    Definition
+        This operator is very similar to martially matched crossover - the difference being random 
+        indices are exchanged, rather than a window. Position based crossover selects a random set 
+        of indices from the parent solutions, then copies the values from these indices in each 
+        parent to one of the offspring. The following indices are filled with values from the opposite
+        parent, in the order in which they appear.
+    
+    Parameters:
+        parent1_repr: Parent 1 representataion (list)
+        parent2_repr: Parent 2 representation (list)
+
+    Returns:
+        Pair of offspring with same type as parents
+    '''
 
     tagged_p1 = tag_solution(parent1_repr)
     tagged_p2 = tag_solution(parent2_repr)
