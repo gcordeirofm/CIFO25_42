@@ -1,7 +1,7 @@
-# CIFO Project - Group 42
+# CIFO Project - Group AY
 Computational Intelligence for Optimization 24/25 - NOVA IMS
 
-Group 42:
+Group AY:
 - Guilherme Cordeiro (20240527)
 - Louis Berthele (20240552)
 - Maria Radix (20240687)
